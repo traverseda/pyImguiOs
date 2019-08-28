@@ -67,6 +67,8 @@ windowCount = collections.Counter()
 
 from contextlib import contextmanager
 class Window(Widget):
+    inAppMenu=True #Set to false if you want the app not to show up in app the "start menu".
+
     def __init__(self):
         #Get a unique name for this window
         self.name = getattr(self,'name',self.__class__.__name__)

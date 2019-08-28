@@ -17,11 +17,30 @@ class ExceptionAlert(Widget):
     def __str__(self):
         return self.exception
 
-def render_alert(alert):
+def render_alert(alertItem):
+    alert, count = alertItem
     if not alert in ignoredAlerts:
+        imgui.text(str(count))
+        imgui.next_column()
         alert.render()
+        imgui.next_column()
+        imgui.separator()
 
 class AlertViewer(Window):
 
     def render(self):
-        list(map(render_alert, alerts))
+        imgui.columns(2, 'alertList')
+        imgui.set_column_offset(1, 45)
+        imgui.text("Count")
+        imgui.next_column()
+        imgui.text("Alert")
+        imgui.next_column()
+        imgui.separator()
+        #ToDo: In the future dont revert this, and simple have it lock scroll
+        #to bottom like a terminal? Might be more effort than it's worth.
+        list(map(render_alert, reversed(alerts.items())))
+        imgui.text("Count")
+        imgui.next_column()
+        imgui.text("Alert")
+        imgui.next_column()
+        imgui.columns(1)

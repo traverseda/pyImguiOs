@@ -26,5 +26,6 @@ thirdparty_plugins = {
 from core import Window
 def get_app_list(cls=Window):
     for i in cls.__subclasses__():
-        yield i
+        if i.inAppMenu:
+            yield i
         yield from get_app_list(i)
