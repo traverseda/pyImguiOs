@@ -4,10 +4,35 @@ in an extensible way.
 """
 from core import Widget
 import imgui
+import psutil
+import datetime
+from datetime import timedelta
+
+psutil.sensors_battery()
 
 class BatteryMonitor(Widget):
     def __init__(self):
         self.tickrate = 1 #How often do we update battery information
+        self.update(0)
+
+    def update(self,dt):
+        self.battery = psutil.sensors_battery()
+        self.percentLeft = f"{int(self.battery.percent)}%"
+        self.timeLeft = str(timedelta(seconds=self.battery.secsleft))
+
+    def render(self):
+        imgui.begin_group()
+        imgui.text(self.percentLeft)
+        if self.battery.power_plugged:
+            imgui.text("I")
+        imgui.end_group()
+        if imgui.is_item_hovered():
+            imgui.begin_tooltip()
+            if not self.battery.power_plugged:
+                imgui.text(f"{self.timeLeft}")
+            else:
+                imgui.text("Battery is charging")
+            imgui.end_tooltip()
 
 from datetime import datetime
 class Clock(Widget):

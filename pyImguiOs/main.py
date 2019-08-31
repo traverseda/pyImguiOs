@@ -16,8 +16,9 @@ app_list = list(get_app_list())
 desktop = Desktop()
 
 from apps.alerts import ExceptionAlert
-from menuWidgets import Clock
+from menuWidgets import Clock, BatteryMonitor
 clock = Clock()
+battery = BatteryMonitor()
 
 def main():
     window = mainWindow
@@ -41,6 +42,8 @@ def main():
                     exit(1)
 
                 imgui.end_menu()
+            imgui.text("|")
+            battery.render()
             imgui.text("|")
             clock.render()
             imgui.end_main_menu_bar()
