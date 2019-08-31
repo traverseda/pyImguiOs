@@ -60,9 +60,12 @@ def main():
         try:
             pyglet.app.run()
         except Exception as e:
-            alert = ExceptionAlert(repr(e),str(traceback.format_exc()))
-            alerts.update((alert,))
-            traceback.print_exc()
+            if isinstance(e, imgui.core.ImGuiError):
+                raise e
+            else:
+                alert = ExceptionAlert(repr(e),str(traceback.format_exc()))
+                alerts.update((alert,))
+                traceback.print_exc()
     impl.shutdown()
 
 if __name__ == "__main__":

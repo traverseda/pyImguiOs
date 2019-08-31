@@ -7,8 +7,7 @@ import imgui
 import psutil
 import datetime
 from datetime import timedelta
-
-psutil.sensors_battery()
+from theme import theme
 
 class BatteryMonitor(Widget):
     def __init__(self):
@@ -24,7 +23,7 @@ class BatteryMonitor(Widget):
         imgui.begin_group()
         imgui.text(self.percentLeft)
         if self.battery.power_plugged:
-            imgui.text("I")
+            imgui.text_colored("I",*theme.color("battery_charging","success"))
         imgui.end_group()
         if imgui.is_item_hovered():
             imgui.begin_tooltip()

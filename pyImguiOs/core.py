@@ -44,6 +44,7 @@ class Widget:
 
     @tickrate.setter
     def tickrate(self,tickrate):
+        #ToDo, this holds a reference to closed windows
         self._tickrate = tickrate
         pyglet.clock.unschedule(self.update)
         if tickrate==None:
