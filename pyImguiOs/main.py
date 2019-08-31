@@ -16,6 +16,8 @@ app_list = list(get_app_list())
 desktop = Desktop()
 
 from apps.alerts import ExceptionAlert
+from menuWidgets import Clock
+clock = Clock()
 
 def main():
     window = mainWindow
@@ -30,7 +32,7 @@ def main():
                 for app in app_list:
                     clicked, selected = imgui.menu_item(app.__name__,'', False, True)
                     if clicked: desktop.add(app())
-
+                imgui.separator()
                 clicked_quit, selected_quit = imgui.menu_item(
                     "Quit", '', False, True
                 )
@@ -39,6 +41,8 @@ def main():
                     exit(1)
 
                 imgui.end_menu()
+            imgui.text("|")
+            clock.render()
             imgui.end_main_menu_bar()
         desktop.render()
 
@@ -48,6 +52,7 @@ def main():
         window.clear()
         imgui.render()
         impl.render(imgui.get_draw_data())
+
     while True:
         try:
             pyglet.app.run()

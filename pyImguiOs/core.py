@@ -9,10 +9,7 @@ def render_all(iterable):
     """Quickly calls the _render method on an iterable
     of renderables.
     """
-    try:
-        collections.deque(map(call_render,iterable))
-    except Exception as e:
-        pass
+    collections.deque(map(call_render,iterable))
 
 class Desktop:
     def __init__(self):
@@ -42,17 +39,19 @@ class Widget:
     def __init__(self):
         pass
 
-    def get_tickrate(self): return getattr(self, "_tickrate", None)
+    @property
+    def tickrate(self): return getattr(self, "_tickrate", None)
 
-    def set_tickrate(self,tickrate):
+    @tickrate.setter
+    def tickrate(self,tickrate):
         self._tickrate = tickrate
         pyglet.clock.unschedule(self.update)
         if tickrate==None:
             return
-        if tickrate == True:
-            pyglet.clock.schedule(self.update)
+        if type(tickrate) == bool and tickrate:
+            pyglet.clock.schedule_interval(self.update)
             return
-        pyglet.clock.schedule(self.update,tickrate)
+        pyglet.clock.schedule_interval(self.update,tickrate)
 
     def _render(self):
         self.render()
@@ -89,7 +88,7 @@ class Window(Widget):
         with self as running:
             if running: self.render()
 
-mainWindow = pyglet.window.Window(width=1280, height=720, resizable=True)
+mainWindow = pyglet.window.Window(width=1280, height=720, resizable=True, vsync=True)
 
 from collections import Counter, OrderedDict
 ignoredAlerts = set()

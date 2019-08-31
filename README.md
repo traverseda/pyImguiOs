@@ -36,9 +36,3 @@ complicated program as a series of small components that do one thing and do it 
 even if you have to deal with signaling, GUI callbacks, and all the other 
 complexities that come with writing a GUI program.
 
-
-## Getting started with development
-
-# Faq
-
-Have a question? Open an issues.
