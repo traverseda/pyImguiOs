@@ -3,7 +3,7 @@
 This is likely to be rewritten using a different set of GUI bindings, which is
 fine as I didn't get very far anyway. Kept for historical reasons.
 
-I'll likely be developing an object-oriented interface on top of the PyDearGui
+I'll likely be developing an object-oriented interface on top of the DearPyGui
 bindings, to try and provide a retained-mode interface to imgui (better
 performance) that is still very easy to use. A new "toy oeprating system" will
 be developed on top of that.
