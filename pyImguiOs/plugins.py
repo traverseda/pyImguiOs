@@ -8,7 +8,7 @@ def iter_namespace(ns_pkg):
     # the name.
     return pkgutil.iter_modules(ns_pkg.__path__, ns_pkg.__name__ + ".")
 
-import apps
+from . import apps
 
 builtin_plugins = {
     name: importlib.import_module(name)
@@ -23,7 +23,7 @@ thirdparty_plugins = {
     if name.startswith('pyImguiOs_')
 }
 
-from core import Window
+from pyImguiOs.core import Window
 def get_app_list(cls=Window):
     for i in cls.__subclasses__():
         if i.inAppMenu:

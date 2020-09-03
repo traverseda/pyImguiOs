@@ -1,11 +1,10 @@
-from core import Window
+from pyImguiOs.core import Window
 import imgui
 import psutil
 
-
 class SystemMonitor(Window):
     def __init__(self):
-        self.attrs=['pid','name','cpu_percent','username',]
+        self.attrs=['pid','name','cpu_percent','memory_percent','username',]
         self.tickrate=1
         self.sortKey='cpu_percent'
         self.reverseSort=True
@@ -17,18 +16,17 @@ class SystemMonitor(Window):
         self.processList.sort(key=lambda x: x.info[self.sortKey],reverse=self.reverseSort)
 
     def render_row(self, process):
-        imgui.text(str(process.info['pid']))
-        imgui.next_column()
-        imgui.text(process.info['name'])
-        imgui.next_column()
-        imgui.text(str(process.info['cpu_percent']))
-        imgui.next_column()
-        imgui.text(process.info['username'])
-        imgui.next_column()
+        imgui.begin_group()
+        for key in self.attrs:
+            imgui.text(str(process.info[key]))
+            imgui.next_column()
+        imgui.end_group()
+        if imgui.is_item_clicked():
+            pass
 
     def render_header(self, item):
         if item == self.sortKey:
-            imgui.text("+ "+item)
+            imgui.text("* "+item)
         else:
             imgui.text(item)
         if imgui.is_item_clicked():

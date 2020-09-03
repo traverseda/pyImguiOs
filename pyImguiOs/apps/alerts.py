@@ -1,7 +1,7 @@
-from core import Window, alerts, ignoredAlerts, GenericPythonWidget, Widget
+from pyImguiOs.core import Window, alerts, ignoredAlerts, Widget
 import imgui
 import traceback
-from utils import singleton
+from pyImguiOs.utils import singleton
 
 @singleton
 class ExceptionAlert(Widget):

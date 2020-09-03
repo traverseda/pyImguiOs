@@ -9,14 +9,14 @@ import traceback
 import imgui
 from imgui.integrations.pyglet import PygletRenderer
 
-from core import Desktop, mainWindow, alerts
-from plugins import get_app_list
+from .core import Desktop, mainWindow, alerts
+from .plugins import get_app_list
 
 app_list = list(get_app_list())
 desktop = Desktop()
 
-from apps.alerts import ExceptionAlert
-from menuWidgets import Clock, BatteryMonitor
+from pyImguiOs.apps.alerts import ExceptionAlert
+from pyImguiOs.menuWidgets import Clock, BatteryMonitor
 clock = Clock()
 battery = BatteryMonitor()
 
@@ -68,9 +68,12 @@ def main():
                 traceback.print_exc()
     impl.shutdown()
 
-if __name__ == "__main__":
+def cli():
     try:
         main()
     except (SystemExit, KeyboardInterrupt):
         pass
+
+if __name__ == "__main__":
+    cli()
 

@@ -1,4 +1,13 @@
 # pyImguiOs
+
+This is likely to be rewritten using a different set of GUI bindings, which is
+fine as I didn't get very far anyway. Kept for historical reasons.
+
+I'll likely be developing an object-oriented interface on top of the PyDearGui
+bindings, to try and provide a retained-mode interface to imgui (better
+performance) that is still very easy to use. A new "toy oeprating system" will
+be developed on top of that.
+
 ### A toy "operating system" written using python and imgui.
 
 Inspired by "fantasy consoles" like the pico8, pyImguiOs is a fantasy operating
@@ -18,7 +27,8 @@ bring the whole system to a crawl. It's also impossible to do any sort of
 isolation/sandboxing/privilege-separation.
 
 These issues would be fixable with a big enough budget, talk to me about
-network-transparent object proxying.
+network-transparent object proxying, capability-based security, how how to
+actually make that all performant.
 
 Imgui is by far the easiest GUI framework I've ever used, at least for simple
 UIs. We want to keep UIs simple enough to be easy to implement.
@@ -35,4 +45,3 @@ streams to remain king), and flexible enough that you can implement a
 complicated program as a series of small components that do one thing and do it well,
 even if you have to deal with signaling, GUI callbacks, and all the other 
 complexities that come with writing a GUI program.
-

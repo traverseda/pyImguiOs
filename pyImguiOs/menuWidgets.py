@@ -2,12 +2,12 @@
 I create a general system for dealing with the menu bar
 in an extensible way.
 """
-from core import Widget
+from .core import Widget
 import imgui
 import psutil
 import datetime
 from datetime import timedelta
-from theme import theme
+from .theme import theme
 
 class BatteryMonitor(Widget):
     def __init__(self):

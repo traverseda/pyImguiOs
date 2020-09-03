@@ -1,4 +1,4 @@
-from core import Window, mainWindow
+from pyImguiOs.core import Window, mainWindow
 import pyglet
 import pty, pyte, imgui, shlex, os, signal
 import sys

@@ -90,6 +90,7 @@ class Window(Widget):
             if running: self.render()
 
 mainWindow = pyglet.window.Window(width=1280, height=720, resizable=True, vsync=True)
+print(mainWindow)
 
 from collections import Counter, OrderedDict
 ignoredAlerts = set()
@@ -98,8 +99,3 @@ class OrderedAlertCounter(Counter, OrderedDict):
 
 alerts = OrderedAlertCounter()
 
-import wrapt
-
-class GenericPythonWidget(Widget,wrapt.ObjectProxy):
-    def render(self):
-        imgui.text(str(self))

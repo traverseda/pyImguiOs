@@ -1,7 +1,7 @@
 """Misc apps that are too small to need their own file
 """
 import imgui
-from core import Window, windowClosed
+from pyImguiOs.core import Window, windowClosed
 
 class DemoWindow(Window):
     def _render(self):
