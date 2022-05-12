@@ -8,6 +8,8 @@ bindings, to try and provide a retained-mode interface to imgui (better
 performance) that is still very easy to use. A new "toy oeprating system" will
 be developed on top of that.
 
+![screenshot](screenshot.png)
+
 ## Running
 
 Make sure you have python-poetry installed properly.
