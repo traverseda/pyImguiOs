@@ -8,6 +8,18 @@ bindings, to try and provide a retained-mode interface to imgui (better
 performance) that is still very easy to use. A new "toy oeprating system" will
 be developed on top of that.
 
+## Running
+
+Make sure you have python-poetry installed properly.
+
+
+```
+git clone https://github.com/traverseda/pyImguiOs.git
+cd pyImguiOs
+poetry install
+poetry run python3 -m pyImguiOs.main
+```
+
 ### A toy "operating system" written using python and imgui.
 
 Inspired by "fantasy consoles" like the pico8, pyImguiOs is a fantasy operating
